@@ -1,0 +1,18 @@
+item.pixel_pumpkin_carving.carving_knife.name=Carving Knife
+
+tile.pixel_pumpkin_carving.pumpkin_carvable.name=Carvable Pumpkin
+tile.pixel_pumpkin_carving.pumpkin_carvable_lit.name=Carvable Jack o'Lantern
+tile.pixel_pumpkin_carving.pale_pumpkin_carvable.name=Carvable Pale Pumpkin
+tile.pixel_pumpkin_carving.pale_pumpkin_carvable_lit.name=Carvable Pale Jack o'Lantern
+tile.pixel_pumpkin_carving.pumpkin_uncarved.name=Uncarved Pumpkin
+
+subtitles.pixel_pumpkin_carving.block.pumpkin.carve=Shears carve
+subtitles.pixel_pumpkin_carving.block.pumpkin.carve_pixel=Carving knife carves
+subtitles.pixel_pumpkin_carving.block.pumpkin.fill_pixel=Hole fills
+subtitles.pixel_pumpkin_carving.block.pumpkin.insert=Item inserted
+subtitles.pixel_pumpkin_carving.block.pumpkin.remove=Item removed
+
+config.pixel_pumpkin_carving.title=Pixel Pumpkin Carving Config
+config.pixel_pumpkin_carving.configVersion=Config Version
+config.pixel_pumpkin_carving.pumpkinTypes=Pumpkins Registry
+config.pixel_pumpkin_carving.jackolanternLightingItems=Jack o' Lantern Lights

@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": 
+    {
+        "end": "minecraft:blocks/pumpkin_top",
+        "side": "minecraft:blocks/pumpkin_side"
+    }
+}

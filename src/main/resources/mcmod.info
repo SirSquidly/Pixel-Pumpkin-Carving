@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "pixel_pumpkin_carving",
+    "name": "Pixel Pumpkin Carving",
+    "description": "Carve pumpkins (or almost any block) pixel by pixel! Customize your carving, light them up, wear them, and more.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "authorList": [
+      "Sir Squidly"
+    ],
+    "credits": "The_Computerizer for their very nice Build template",
+    "logoFile": "assets/pixel_pumpkin_carving/textures/ppc_icon.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

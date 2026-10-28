@@ -1,0 +1,17 @@
+{
+  "conditions":
+  [
+    { "type": "minecraft:item_exists", "item": "pixel_pumpkin_carving:pumpkin_uncarved" }
+  ],
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " s ",
+    "sps",
+    " s "
+  ],
+  "key": {
+    "s": { "item": "minecraft:pumpkin_seeds" },
+    "p": { "item": "minecraft:pumpkin" }
+  },
+  "result": { "item": "pixel_pumpkin_carving:pumpkin_uncarved" }
+}

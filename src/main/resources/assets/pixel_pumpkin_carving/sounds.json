@@ -1,0 +1,37 @@
+{
+  "block.pumpkin.carve":
+  {
+    "category": "block",
+    "subtitle": "subtitles.pixel_pumpkin_carving.block.pumpkin.carve",
+    "sounds": [ "pixel_pumpkin_carving:block/pumpkin/carve1", "pixel_pumpkin_carving:block/pumpkin/carve2" ]
+  },
+  "block.pumpkin.carve_pixel":
+  {
+    "category": "block",
+    "subtitle": "subtitles.pixel_pumpkin_carving.block.pumpkin.carve_pixel",
+    "sounds": [ "pixel_pumpkin_carving:block/pumpkin/carve_pixel1", "pixel_pumpkin_carving:block/pumpkin/carve_pixel2",
+      "pixel_pumpkin_carving:block/pumpkin/carve_pixel3", "pixel_pumpkin_carving:block/pumpkin/carve_pixel4",
+      "pixel_pumpkin_carving:block/pumpkin/carve_pixel5" ]
+  },
+  "block.pumpkin.fill_pixel":
+  {
+    "category": "block",
+    "subtitle": "subtitles.pixel_pumpkin_carving.block.pumpkin.fill_pixel",
+    "sounds": [ "pixel_pumpkin_carving:block/pumpkin/carve_pixel1", "pixel_pumpkin_carving:block/pumpkin/carve_pixel2",
+      "pixel_pumpkin_carving:block/pumpkin/carve_pixel3", "pixel_pumpkin_carving:block/pumpkin/carve_pixel4",
+      "pixel_pumpkin_carving:block/pumpkin/carve_pixel5" ]
+  },
+  "block.pumpkin.insert":
+  {
+    "category": "block",
+    "subtitle": "subtitles.pixel_pumpkin_carving.block.pumpkin.insert",
+    "sounds": [ "pixel_pumpkin_carving:block/pumpkin/insert_item1", "pixel_pumpkin_carving:block/pumpkin/insert_item2" ]
+  },
+  "block.pumpkin.remove":
+  {
+    "category": "block",
+    "subtitle": "subtitles.pixel_pumpkin_carving.block.pumpkin.remove",
+    "sounds": [ "pixel_pumpkin_carving:block/pumpkin/remove_item1", "pixel_pumpkin_carving:block/pumpkin/remove_item2",
+      "pixel_pumpkin_carving:block/pumpkin/remove_item3" ]
+  }
+}

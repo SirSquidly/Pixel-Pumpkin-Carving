@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": 
+    {
+        "end": "pixel_pumpkin_carving:blocks/pale_pumpkin_top",
+        "side": "pixel_pumpkin_carving:blocks/pale_pumpkin_side"
+    }
+}
