@@ -1,5 +1,6 @@
 package com.sirsquidly.pixel_pumpkin_carving.common.blocks;
 
+import com.sirsquidly.pixel_pumpkin_carving.common.FacePatterns;
 import com.sirsquidly.pixel_pumpkin_carving.common.blocks.tile.TileCarvablePumpkin;
 import com.sirsquidly.pixel_pumpkin_carving.config.ConfigParser;
 import com.sirsquidly.pixel_pumpkin_carving.init.PPCBlocks;
@@ -34,18 +35,18 @@ import javax.annotation.Nullable;
 
 public class BlockCarvablePumpkin extends BlockHorizontal implements ITileEntityProvider
 {
-    private final ConfigParser.CarvablePumpkinTypes pumpkinType;
+    private final String pumpkinTypeName;
 
     public BlockCarvablePumpkin(ConfigParser.CarvablePumpkinTypes pumpkinType)
     {
         super(Material.GOURD, MapColor.WHITE_STAINED_HARDENED_CLAY);
-        this.pumpkinType = pumpkinType;
+        this.pumpkinTypeName = pumpkinType.name;
         this.setHardness(1.5F);
         this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
-    public ConfigParser.CarvablePumpkinTypes getPumpkinType() { return pumpkinType; }
+    public ConfigParser.CarvablePumpkinTypes getPumpkinType() { return ConfigParser.getPumpkinConfig(pumpkinTypeName); }
 
     public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
     { return worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && worldIn.isSideSolid(pos.down(), EnumFacing.UP); }
@@ -59,7 +60,10 @@ public class BlockCarvablePumpkin extends BlockHorizontal implements ITileEntity
         TileCarvablePumpkin tile = (TileCarvablePumpkin) te;
         EnumFacing facing = state.getValue(FACING);
 
-        ConfigParser.JackOLanternLights light = ConfigParser.getJackOLanternLights(held);
+        ConfigParser.CarvablePumpkinTypes pumpkinType = getPumpkinType();
+        if (pumpkinType == null) return false;
+
+        ConfigParser.JackOLanternLights light = ConfigParser.getJackOLanternLights(held, pumpkinType);
         if (light != null)
         {
             /* Insertions are FRONT ONLY! */
@@ -126,7 +130,7 @@ public class BlockCarvablePumpkin extends BlockHorizontal implements ITileEntity
             spawnParticlesAlongFace(world, pos, facing, state, false);
             if (world.isRemote) return true;
             player.swingArm(hand);
-            tile.applyVanillaCarving();
+            tile.applyCarving(FacePatterns.VANILLA);
             world.notifyBlockUpdate(pos, state, state, 3);
             return true;
         }
@@ -201,7 +205,7 @@ public class BlockCarvablePumpkin extends BlockHorizontal implements ITileEntity
     /** Easy way to grab the matching version of this block (The Jack to a Pumpkin, or the Pumpkin to a Jack) */
     @Nullable
     protected BlockCarvablePumpkin getMatchingPumpkin(boolean jackOLantern)
-    { return PPCBlocks.getRegisteredPumpkins().stream().filter(t -> t.config == pumpkinType).map(t -> jackOLantern ? t.jackOLantern : t.pumpkin).findFirst().orElse(null); }
+    { return PPCBlocks.getRegisteredPumpkins().stream().filter(t -> t.config.name.equals(pumpkinTypeName)).map(t -> jackOLantern ? t.jackOLantern : t.pumpkin).findFirst().orElse(null); }
 
     protected boolean swapPumpkin(World world, BlockPos pos, IBlockState state, BlockCarvablePumpkin target)
     {

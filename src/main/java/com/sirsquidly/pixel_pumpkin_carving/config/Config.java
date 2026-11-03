@@ -21,47 +21,95 @@ public class Config
             "0.x.0 - Config options have been added.",
             "x.0.0 - Previous Config Options have been completely overhauled and/or removed. Creating a fresh file is recommended."
     })
-    public static String configVersion = "1.0.0";
+    public static String configVersion = "1.1.0";
 
     @net.minecraftforge.common.config.Config.RequiresMcRestart
-    @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.pumpkinTypes")
+    @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.pumpkinTypeDefinitions")
     @net.minecraftforge.common.config.Config.Comment({
             "Registers a carvable pumpkin and jack o lantern.",
-            "Formatted as \"[Name]-[Color]-[Shading Color];[Block];[Block]...\"",
-            "Colors use hexidecimal RGB format; RRGGBB",
-            "Eight-digit ARGB values are also supported: AARRGGBB",
+            "Formatted as \"[Name]|[Property]=[Value]|[Property]=[Value]|...\"",
             "",
-            "[Name] - The ID of the item (appended with '_carvable' AND '_carvable_lit').",
-            "[Color] - The base color of any carved (open) parts of the pumpkin.",
-            "[Shading Color] - The color of drop shadows inside the pumpkin.",
-            "[Block] - The ID of blocks that become this pumpkin when interacted with using the Carving Knife."
+            "[Name] - The ID of the registered pumpkin type block IDs (appended with '_carvable' AND '_carvable_lit').",
+            "",
+            "Properties can be arranged in any order:",
+            "[baseColor] - The base color of any carved (open) parts of the pumpkin. Supports RGB (RRGGBB) or ARGB (AARRGGBB) hex values",
+            "[shadowColor] - The color of drop shadows inside the pumpkin. Supports RGB (RRGGBB) or ARGB (AARRGGBB) hex values",
+            "[sourceBlocks] - One or more block IDs that convert into this pumpkin when interacted with using the Carving Knife.",
+            "[golemSupported] - Whether this pumpkin can be used to construct golems. Default is true.",
+            "[halloween] - Whether this pumpkin can appear on mobs during Halloween. Default is true.",
+            "[allowedLights] - Item IDs of lighting items that can be inserted. Only items registered in `jackolanternLightingItems` are accepted. Use '*' to allow all registered lighting items. Default is *.",
+            "",
+            "Example:",
+            "pale_pumpkin|baseColor=3C3226|shadowColor=211811|sourceBlocks=palebloom:pale_pumpkin;minecraft:wool:0|golemSupported=false|halloween=true|allowedLights=minecraft:torch;minecraft:redstone_torch"
     })
-    public static String[] pumpkinTypes = {
-            "pumpkin-441300-2D0003;pixel_pumpkin_carving:pumpkin_uncarved",
-            "pale_pumpkin-3C3226-211811;palebloom:pale_pumpkin"};
+    public static String[] pumpkinTypeDefinitions = {
+            "pumpkin|baseColor=441300|shadowColor=2D0003|sourceBlocks=pixel_pumpkin_carving:pumpkin_uncarved",
+            "pale_pumpkin|baseColor=3C3226|shadowColor=211811|sourceBlocks=palebloom:pale_pumpkin|golemSupported=false"};
 
     @net.minecraftforge.common.config.Config.RequiresMcRestart
-    @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.jackolanternLightingItems")
+    @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.lightingItemDefinitions")
     @net.minecraftforge.common.config.Config.Comment({
             "Adds items that can be inserted into a carved pumpkin to become a jack o lantern.",
-            "Formatted as \"[Item]-[Color]-[Shading Color]-[Inner Color]\"",
-            "Colors use hexidecimal RGB format; RRGGBB",
-            "Eight-digit ARGB values are also supported: AARRGGBB",
+            "Formatted as \"[Item]|[Property]=[Value]|[Property]=[Value]|...\"",
             "",
-            "[Item] - The ID of the item (appended with '_lapis_rune').",
-            "[Color] - The base color of any carved (open) parts of the Jack o' Lantern.",
-            "[Shading Color] - The color of drop shadows inside the Jack o' Lantern.",
-            "[Inner Color] - The color of the center region of the Jack o' Lantern."
+            "[Item] - The registry ID of the lighting item.",
+            "",
+            "Properties can be arranged in any order:",
+            "[baseColor] - The base color of carved (open) parts of the Jack o' Lantern. Supports RGB (RRGGBB) or ARGB (AARRGGBB) hex values.",
+            "[shadowColor] - The color of drop shadows inside the Jack o' Lantern. Supports RGB (RRGGBB) or ARGB (AARRGGBB) hex values.",
+            "[innerColor] - The color of the center region of the Jack o' Lantern. Supports RGB (RRGGBB) or ARGB (AARRGGBB) hex values.",
+            "[halloween] - Whether this lighting item can appear in Jack o' Lanterns on mobs during the Halloween event. Default is true.",
+            "",
+            "Example:",
+            "ee:amber_torch|baseColor=cfae48|shadowColor=bd811a|innerColor=ebd388|halloween=false"
     })
-    public static String[] jackolanternLightingItems = {
+    public static String[] lightingItemDefinitions = {
             "minecraft:torch",
-            "minecraft:redstone_torch-fd0000-af0000-ff4e4e",
-            "ancientbeasts:green_torch-a3d03c-5a9800-edf373",
-            "deeperdepths:copper_torch-66cc2c-1aa334-a6ed4c",
-            "ee:amber_torch-cfae48-bd811a-ebd388",
-            "nb:soul_torch-11efef-2bb7b7-a3fcfa",
-            "oe:underwater_torch-80ffc0-62c680-c5ffde"};
+            "minecraft:redstone_torch|baseColor=fd0000|shadowColor=af0000|innerColor=ff4e4e",
+            "ancientbeasts:green_torch|baseColor=a3d03c|shadowColor=5a9800|innerColor=edf373|halloween=false",
+            "deeperdepths:copper_torch|baseColor=66cc2c|shadowColor=1aa334|innerColor=a6ed4c",
+            "ee:amber_torch|baseColor=cfae48|shadowColor=bd811a|innerColor=ebd388|halloween=false",
+            "nb:soul_torch|baseColor=11efef|shadowColor=2bb7b7|innerColor=a3fcfa",
+            "oe:underwater_torch|baseColor=80ffc0|shadowColor=62c680|innerColor=c5ffde"
+    };
 
+
+    @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.halloween")
+    @net.minecraftforge.common.config.Config.Comment("Config related to Halloween")
+    public static configHalloween halloween = new configHalloween();
+
+    public static class configHalloween
+    {
+        @net.minecraftforge.common.config.Config.RequiresMcRestart
+        @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.halloween.enable")
+        @net.minecraftforge.common.config.Config.Comment("Enables the replacement of vanilla's Halloween pumpkin wearing spawns with this event's version.")
+        public boolean enable = true;
+
+        @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.halloween.halloweenWindow")
+        @net.minecraftforge.common.config.Config.Comment("The time frame around Halloween that pumpkin spawns will occur.")
+        @net.minecraftforge.common.config.Config.RangeInt(min = 0, max = 304)
+        public int halloweenWindow = 3;
+
+        @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.halloween.pumpkinChance")
+        @net.minecraftforge.common.config.Config.Comment("The chance a mob spawns wearing a Carvable Pumpkin. This selects a random pumpkin type, obeying the `halloweenParticipant` boolean.")
+        @net.minecraftforge.common.config.Config.RangeDouble(min = 0, max = 100)
+        public double pumpkinChance = 5.625D;
+
+        @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.halloween.jackOLanternChance")
+        @net.minecraftforge.common.config.Config.Comment("The chance a mob spawns wearing a Carvable Jack O' Lantern. This selects a random lighting item, obeying a given pumpkin's `allowed lights` list.")
+        @net.minecraftforge.common.config.Config.RangeDouble(min = 0, max = 100)
+        public double jackOLanternChance = 0.833D;
+
+        @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.halloween.halloweenDayPumpkinChance")
+        @net.minecraftforge.common.config.Config.Comment("The chance a mob spawns wearing a Carvable Pumpkin on Halloween Day. This selects a random pumpkin type, obeying the `halloweenParticipant` boolean.")
+        @net.minecraftforge.common.config.Config.RangeDouble(min = 0, max = 100)
+        public double halloweenDayPumpkinChance = 22.5D;
+
+        @net.minecraftforge.common.config.Config.LangKey("config.pixel_pumpkin_carving.halloween.halloweenDayJackOLanternChance")
+        @net.minecraftforge.common.config.Config.Comment("The chance a mob spawns wearing a Carvable Jack O' Lantern on Halloween Day. This selects a random lighting item, obeying a given pumpkin's `allowed lights` list.")
+        @net.minecraftforge.common.config.Config.RangeDouble(min = 0, max = 100)
+        public double halloweenDayJackOLanternChance = 2.5D;
+    }
 
     @Mod.EventBusSubscriber(modid = pixelPumpkinCarving.MOD_ID)
     public static class ConfigSyncHandler

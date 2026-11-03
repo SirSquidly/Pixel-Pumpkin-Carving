@@ -28,7 +28,6 @@ public class TileCarvablePumpkin extends TileEntity
     private int jackShadowColor = 0xFFFFFFFF;
     private int jackInnerColor = 0xFFFFFFFF;
 
-
     public void carvePixel(int x, int y)
     {
         if (x < 0 || x >= 16 || y < 0 || y >= 16) return;
@@ -70,30 +69,11 @@ public class TileCarvablePumpkin extends TileEntity
         { world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3); }
     }
 
-    public void applyVanillaCarving()
+    public void applyCarving(String[] pattern)
     {
-        String[] face = {
-                "................",
-                "................",
-                "....##....#.....",
-                "....###..###....",
-                "...####..####...",
-                "...####..####...",
-                "...####..#####..",
-                "....##....####..",
-                "................",
-                "...#.#..#..#.#..",
-                "..############..",
-                "..#############.",
-                "...##.##.###.##.",
-                "...#..#....#....",
-                "................",
-                "................"
-        };
-
         for (int y = 0; y < 16; y++)
             for (int x = 0; x < 16; x++)
-                if (face[y].charAt(x) == '#')
+                if (pattern[y].charAt(x) == '#')
                     carvedPixels[x][y] = true;
 
         markDirty();

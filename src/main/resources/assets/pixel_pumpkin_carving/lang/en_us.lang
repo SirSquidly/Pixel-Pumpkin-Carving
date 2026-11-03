@@ -14,5 +14,12 @@ subtitles.pixel_pumpkin_carving.block.pumpkin.remove=Item removed
 
 config.pixel_pumpkin_carving.title=Pixel Pumpkin Carving Config
 config.pixel_pumpkin_carving.configVersion=Config Version
-config.pixel_pumpkin_carving.pumpkinTypes=Pumpkins Registry
-config.pixel_pumpkin_carving.jackolanternLightingItems=Jack o' Lantern Lights
+config.pixel_pumpkin_carving.pumpkinTypeDefinitions=Pumpkins Registry
+config.pixel_pumpkin_carving.lightingItemDefinitions=Jack o' Lantern Lights
+config.pixel_pumpkin_carving.halloween=Halloween Config
+config.pixel_pumpkin_carving.halloween.enable=Enable Halloween replacement
+config.pixel_pumpkin_carving.halloween.halloweenWindow=Halloween window
+config.pixel_pumpkin_carving.halloween.pumpkinChance=Pumpkin spawn chance
+config.pixel_pumpkin_carving.halloween.jackOLanternChance=Jack O' Lantern spawn chance
+config.pixel_pumpkin_carving.halloween.halloweenDayPumpkinChance=Pumpkin spawn chance (Halloween Day)
+config.pixel_pumpkin_carving.halloween.halloweenDayJackOLanternChance=Jack O' Lantern spawn chance (Halloween Day)
